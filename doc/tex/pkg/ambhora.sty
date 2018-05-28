@@ -1,0 +1,71 @@
+% Ambhora Package
+% The ambhora package provides things which are not essential for writing
+% documents, however, make the output better. Again a good characterization is
+% what cannot be in this package. This package does not contain any shortcuts
+% and aliases and cannot contain color. This only contains styling. This is
+% important because, removing this package is again completely possible.
+% without any problem in the output. However, this makes output look good, and
+% so is good for internal purposes.
+\ProvidesPackage{ambhora}
+
+% We use the etoolbox package to provide all the awesome commands.
+\usepackage{etoolbox}
+
+% The package enhances the quality of tables in LaTeX, providing extra commands
+% as well as behind the scenes optimization
+\usepackage{booktabs}
+
+% Improve the Table of Contents
+\usepackage{tocbibind}
+\RedeclareSectionCommand[tocnumwidth=2.0em]{part}
+\RedeclareSectionCommand[tocindent=2.0em,tocnumwidth=2.0em]{chapter}
+\RedeclareSectionCommand[tocindent=4.0em,tocnumwidth=2.6em]{section}
+\RedeclareSectionCommand[tocindent=6.0em,tocnumwidth=3.7em]{subsection}
+% Better enumeration Options
+\usepackage{enumitem}
+
+% We use mdframed to provide for nice equation and other frames
+\usepackage{mdframed}
+
+
+% We use the newfloat pacakge to define customized floating environments
+\usepackage{newfloat}
+
+% Use package moresize to provide more font sizes
+\usepackage{moresize}
+
+% We use the xcolor packages to provide colors
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Appearances Hacks
+% We want our matrices to look good and hence, we are increasing the spacing
+% between the matrices
+\renewcommand*{\arraystretch}{1.3}
+
+
+% We want to have program listings in the document
+\usepackage{listings}
+
+
+% Making the Headers Fancy
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% I want exactly one space after the sentence. I think this is better to read.
+\frenchspacing
+
+% Blacksquare at the end of Proof Environment
+\renewcommand{\qedsymbol}{$\blacksquare$}
+% We make the proof heading bold
+% This is done before defining the solution enviornment so that
+% the solution enviornment also carries the same properties.
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{%
+  \par\pushQED{\qed}\normalfont%
+  \topsep6\p@\@plus6\p@\relax
+  \trivlist\item[\hskip\labelsep\bfseries#1\@addpunct{.}]%
+  \ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}

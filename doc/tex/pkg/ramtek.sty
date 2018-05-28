@@ -1,0 +1,69 @@
+% Ramtek Package
+% This package adds color to the document.
+\ProvidesPackage{ramtek}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=MidnightBlue,
+  citecolor=blue,
+}
+
+\makeatletter
+\let\reftagform@=\tagform@
+\def\tagform@#1{\maketag@@@{(\ignorespaces\textcolor{MidnightBlue}{#1}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{\textup{\reftagform@{\ref{#1}}}}
+\makeatother
+% We colorize the theorem headings and other things
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{\bfseries \color{MidnightBlue}}% same as heading font
+  \thm@headfont{\bfseries \color{MidnightBlue}}% same as heading font
+  \normalfont % body font
+}
+\def\th@definition{%
+  \thm@notefont{\bfseries \color{MidnightBlue}}% same as heading font
+  \thm@headfont{\bfseries \color{MidnightBlue}}% same as heading font
+  \normalfont % body font
+}
+\def\th@remark{%
+  \thm@notefont{\bfseries \color{MidnightBlue}}% same as heading font
+  \thm@headfont{\bfseries \color{MidnightBlue}}% same as heading font
+  \normalfont % body font
+}
+\makeatother
+
+% Making the Captions Blue
+\PassOptionsToPackage{labelfont={color=MidnightBlue,bf,sf},labelsep=space}{caption}
+
+% Making the Headers and Footers Blue
+\fancyhf{}
+\fancyhead[LE,RO]{\textcolor{MidnightBlue}{\textsf{\textbf{\thepage}}}}
+\fancyhead[LO]{\textcolor{MidnightBlue}{\textsf{\textbf{\leftmark}}}}
+\fancyhead[RE]{\textcolor{MidnightBlue}{\textsf{\textbf{\rightmark}}}}
+\makeatletter
+\patchcmd{\@fancyhead}{\rlap}{\color{MidnightBlue}\rlap}{}{}
+\patchcmd{\@fancyfoot}{\rlap}{\color{MidnightBlue}\rlap}{}{}
+\makeatother
+\renewcommand*\sectfont{\sffamily\bfseries\color{MidnightBlue}}
+\fancypagestyle{plain}{
+\fancyhf{}
+%\fancyhead[RO,LE]{\begin{scriptsize}
+%\textcopyright\ Jayesh Badwaik \the\year, Creative Commons
+%Attribution-ShareAlike 4.0 International License\end{scriptsize}}
+\fancyfoot[RO,LE]{\textsf{\textbf{\thepage}}}%
+}
+
+\usepackage{xparse}
+\usepackage{float}
+\DeclareFloatingEnvironment[fileext=frm,placement={!ht},name=Equation]{eqfloat}
+
+\captionsetup[eqfloat]{labelfont=bf}
+
+\NewDocumentEnvironment{eqcap}{m}
+    {\begin{eqfloat}[H]
+    \begin{mdframed}[roundcorner=5pt,linewidth=1pt]
+    }
+    {
+    \caption{#1}
+    \end{mdframed}\end{eqfloat}
+    }

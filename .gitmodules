@@ -1,0 +1,3 @@
+[submodule "third_party/foo"]
+	path = third_party/foo
+	url = git@github.com:sutarwadi/foo.git

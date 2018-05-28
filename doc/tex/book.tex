@@ -1,0 +1,43 @@
+\documentclass[twoside,8pt,headings=optiontoheadandtoc,b5paper]{scrbook}
+
+% For final printing
+% \usepackage[a4,frame,center]{crop}
+
+%% Config TeX
+\input{config}
+
+% BibTeX
+\usepackage[sorting=ydnt,bibstyle=alphabetic,
+            citestyle=alphabetic,backend=biber]{biblatex}
+\addbibresource{library.bib}
+
+\subject{}
+\subtitle{}
+\title{Book Title}
+\author{Jayesh Badwaik}
+
+\usepackage{pkg/jaytodo}
+\makeindex
+
+\begin{document}
+\frontmatter
+%\pagestyle{empty}
+%\input{coverpage}
+\input{titlepage}
+\pagestyle{fancy}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\listofalgorithms
+\mainmatter
+
+\chapter{Introduction}
+
+
+\backmatter
+\printbibliography[heading=bibintoc]
+\printindex
+\end{document}
+
+

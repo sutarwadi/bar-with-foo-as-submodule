@@ -1,0 +1,15 @@
+{
+  "description" : "list of toolchain files for different configuration",
+  {
+    "folder"    : "x64-linux-clang-libcxx",
+    "os"        : "Linux x64 (Generic)",
+    "cxx"       : "clang++ ",
+    "stdlib"    : "libcxx"
+  },
+  {
+    "folder"    : "x64-linux-gcc-libstdcxx",
+    "os"        : "Linux x64 (Generic)",
+    "cxx"       : "g++ ",
+    "stdlib"    : "stdlibcxx"
+  }
+}

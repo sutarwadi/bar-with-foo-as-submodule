@@ -1,0 +1,59 @@
+% The purpose of this file is to configure document specific information which
+% is still not actually relevant to the document. This is mainly stuff like
+% hypersetup for stuff that normally no one is interest.
+
+%% Geometry
+\usepackage[left=32mm,top=25mm,bottom=25mm,right=20mm]{geometry}
+
+% Essential
+\usepackage{umred}
+\usepackage{silari}
+\usepackage{tadoba}
+
+%% Non Essential Package
+\usepackage{ambhora}
+\usepackage{ramtek}
+
+% Language
+\usepackage[english]{babel}
+
+% Script Fonts
+\usepackage{mathrsfs}
+
+% cleveref package,important in the long documents.
+\usepackage{cleveref}
+
+% This package embeds XMP metadata within the PDF file.
+\usepackage{hyperxmp}
+
+% This command is useful when you want to print a ToC on the last page on the
+% outside instead of the inside.
+\newcommand*\cleartoleftpage{%
+  \clearpage
+  \ifodd\value{page}\hbox{}\newpage\fi
+}
+
+% Hyper Setup
+\hypersetup{%
+  pdfauthor={Jayesh Badwaik},
+  pdfauthortitle={Graduate Student, University of Wuerzburg},
+  pdfcopyright={Copyright (C) 2016, Jayesh Badwaik},
+  pdflicenseurl={https://creativecommons.org/licenses/by-sa/4.0/},
+  pdfcaptionwriter={Jayesh Badwaik},
+  pdfcontactaddress={Emil Fischer Str. 40},
+  pdfcontactcity={Wuerzburg},
+  pdfcontactpostcode={97082},
+  pdfcontactcountry={Germany},
+  pdfcontactphone={},
+  pdfcontactemail={public@jayeshbadwaik.in},
+  pdfcontacturl={%
+  https://www.jayeshbadwaik.in
+  },
+  pdflang={en},
+  pdftitle={},
+  pdfsubject={},
+  baseurl={https://www.jayeshbadwaik.in/oeuvre/},
+  pdfkeywords={}
+}
+
+

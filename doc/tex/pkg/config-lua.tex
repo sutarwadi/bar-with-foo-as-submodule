@@ -1,0 +1,140 @@
+% The purpose of this file is to configure document specific information which
+% is still not actually relevant to the document. This is mainly stuff like
+% hypersetup for stuff that normally no one is interest.
+
+%% Geometry
+\usepackage[left=20mm,top=25mm,bottom=25mm,right=10mm]{geometry}
+
+% Essential
+\usepackage{pkg/umred}
+\usepackage{pkg/silari}
+\usepackage{pkg/tadoba}
+\usepackage[
+  linesnumbered,
+  lined,
+  boxed,
+  commentsnumbered,
+  titlenumbered,
+  algoruled,
+  dotocloa
+  ]{algorithm2e}
+\usepackage{afterpage}
+\usepackage{emptypage}
+\usepackage{bold-extra}
+% Non Essential Package
+\usepackage{pkg/ambhora}
+\usepackage{pkg/ramtek}
+\usepackage{enumitem}
+\setlist[enumerate]{align=left}
+\setlist[itemize]{align=left}
+\usepackage{titlesec}
+\usepackage{epigraph}
+\usepackage{setspace}
+\usepackage{fancyvrb}
+
+\setcounter{secnumdepth}{3}
+
+%%% Font Set
+\usepackage[final]{microtype}
+\usepackage{fontspec}
+\usepackage[
+  mathup=sym, mathit=sym, mathsf=sym, mathbf=sym,
+  mathtt=sym, math-style=ISO
+]{unicode-math}
+\setmainfont{TeX Gyre Bonum}
+\setmathfont[Scale=MatchLowercase]{Latin Modern Math}
+\setmathfont
+  [
+      Extension = .otf,
+      Scale=MatchLowercase,
+      range={scr,bfscr}
+  ]{xits-math}
+
+% Language
+\usepackage{csquotes}
+\usepackage[base]{babel}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{angles}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{quotes}
+\usetikzlibrary{intersections}
+\usepackage{tikz-3dplot}
+
+\let\emph\relax % there's no \RedeclareTextFontCommand
+\DeclareTextFontCommand{\emph}{\bfseries}
+
+% cleveref package,important in the long documents.
+\usepackage{cleveref}
+
+% This package embeds XMP metadata within the PDF file.
+\usepackage{hyperxmp}
+
+%
+\usepackage{subcaption}
+% Indexing Package
+\usepackage{makeidx}
+
+\makeatletter
+\newcommand{\unchapter}[1]{%
+  \begingroup
+  \let\@makechapterhead\@gobble % make \@makechapterhead do nothing
+  \chapter{#1}
+  \endgroup
+}
+\makeatother
+
+
+% Hyper Setup
+\hypersetup{%
+  pdfauthor={Jayesh Badwaik},
+  pdfauthortitle={Graduate Student, University of Wuerzburg},
+  pdfcopyright={Copyright (C) 2016, Jayesh Badwaik},
+  pdflicenseurl={https://creativecommons.org/licenses/by-sa/4.0/},
+  pdfcaptionwriter={Jayesh Badwaik},
+  pdfcontactaddress={Emil Fischer Str. 40},
+  pdfcontactcity={Wuerzburg},
+  pdfcontactpostcode={97082},
+  pdfcontactcountry={Germany},
+  pdfcontactphone={},
+  pdfcontactemail={public@jayeshbadwaik.in},
+  pdfcontacturl={%
+  https://www.jayeshbadwaik.in
+  },
+  pdflang={en},
+  pdftitle={},
+  pdfsubject={},
+  baseurl={https://www.jayeshbadwaik.in/oeuvre/},
+  pdfkeywords={}
+}
+
+
+\titleformat{\chapter}[block]
+ {\Large\bfseries}
+ {\raisebox{-\height}{}%
+  \space\raisebox{-\height}{\bigchapternumber}\space}
+ {20pt}
+ {\printtitle}
+
+
+\titleformat{\section}
+  {\normalfont\LARGE\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\newlength\pretitlewidth
+\newcommand\bigchapternumber{\resizebox{36pt}{!}{\mdseries\thechapter}}
+\newcommand{\printtitle}[1]{%
+  \settowidth{\pretitlewidth}{%
+    {\bigchapternumber}\space
+  }%
+  \parbox[t]{\dimexpr0.9\textwidth-\pretitlewidth}{%
+    \linespread{1}\selectfont
+    \hrule depth 1pt
+    \vspace{2ex}
+    \raggedright\bfseries \Huge#1
+  }%
+}
+
+

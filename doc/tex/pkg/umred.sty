@@ -1,0 +1,100 @@
+% Umred Package
+% This includes only those essential things which are needed in your setup.
+% Actually, a better way would be to define what should NOT go here. This
+% should not include changes to style of commands, no color, no extra shortcuts,
+% and especially no new command definitions.
+\ProvidesPackage{umred}
+
+% This package provides warnings when good practices are not used. Saves a lot
+% of headache later.
+\usepackage{nag}
+
+% We fixed the bug in marginpars. For more details, see
+% http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/mparhack/mparhack
+%.pdf
+\usepackage{mparhack}
+
+% We also use xpatch to provide the more advanced patching commands
+\usepackage{xpatch}
+
+% We always need the hyperref package.
+\usepackage{hyperref}
+
+% The amsmath part is an extension package for LaTeX that provides various
+% features to facilitate writing math formulas and to improve the
+% typographical quality of their output.
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Mathtools Package
+\usepackage{mathtools}
+
+% Com­mands to pro­duce dots in math that re­spect font size
+\usepackage{mathdots}
+
+% Split-level frac­tions in la­tex2e*
+\usepackage{xfrac}
+
+% Quotients in LaTeX
+\usepackage{faktor}
+
+% A package to cancel terms in an expressions in an effort to show computation.
+\usepackage{cancel}
+
+% Package for BigIntegrals and Other big things and shortcuts for some
+\usepackage{relsize}
+\usepackage{bigints}
+
+% bbm package provides mathbb fonts for digits
+\usepackage{bbm}
+
+% Integrals with Dashes
+\usepackage{esint}
+
+% We use the ntheorem Theorem package for all its features.
+%\usepackage[amsthm,framed, thmmarks]{ntheorem}
+\usepackage{amsthm}
+
+% Tools to modify theorem environments
+\usepackage{thmtools}
+
+% We use the caption package to provide options for captions in floating
+% environments
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Now, we introduce the required theorem environments and other environments and
+% customize them according to our preferences.
+% We first define a dummy environment for tracking the counter. All math
+% environments would track according to this counter.
+\newtheorem{environment}{Environment}
+\numberwithin{environment}{chapter}
+
+% Firstly, we have plain/default theorems, with italic text, bold title font
+\theoremstyle{plain}
+\newtheorem{theorem}[environment]{Theorem}
+\newtheorem{proposition}[environment]{Proposition}
+\newtheorem{lemma}[environment]{Lemma}
+\newtheorem{corollary}[environment]{Corollary}
+
+% Next, we have definition and related environments
+\newtheorem{axiom}[environment]{Axiom}
+\newtheorem{assumption}[environment]{Assumption}
+\newtheorem{definition}[environment]{Definition}
+\newtheorem{example}[environment]{Example}
+\newtheorem{problem}[environment]{Problem}
+
+% Now, we have low profile things like remarks.
+\theoremstyle{remark}
+\newtheorem{remark}[environment]{Remark}
+\newtheorem{note}[environment]{Note}
+
+%% Equations and Changes
+% Sometimes, we want to group equations and then have nested numbering for them
+% The following code does that.
+% It uses the command \patchcmd from etoolbox and needs amsmath to modify the
+% equation numbering.
+\patchcmd{\subequations}{\alph{equation}}{\alph{equation}}{}{}
+\newenvironment{equationgroup}{}{}
+\AtBeginEnvironment{equationgroup}{\subequations}
+\AtEndEnvironment{equationgroup}{\endsubequations}

@@ -1,0 +1,31 @@
+# Ignore self
+.gitignore
+
+# Ignore tags
+.tags
+
+# Ignore PDF
+# Prevents PDFs in diff on just recompilation of the PDFs
+# Force add files which you think should be added
+*.pdf
+
+# This prevents accidentally adding large mesh files
+# Force add files which you think should be added
+*.msh
+*.xmsh
+*.xmsp
+*.xmgz
+*.xmbi
+
+
+# Ignore gitstats
+.gitstats
+
+# Ignore personal checklist
+
+###############################################################################
+# Developer Specific Ignores
+###############################################################################
+.vimrc
+.vim-cmake-project
+.ycm_extra_conf.py
